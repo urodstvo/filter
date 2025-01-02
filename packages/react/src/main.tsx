@@ -4,11 +4,10 @@ import { createRoot } from 'react-dom/client';
 import { Example } from './example';
 
 createRoot(document.getElementById('root')!).render(
-    <StrictMode>     
-       <Example />
-    </StrictMode>
+    <StrictMode>
+        <Example />
+    </StrictMode>,
 );
-
 
 /**
  * <Filter>
@@ -18,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
  *      name="search"
  *      defaultValue=""
  *      render={({field}) => {
- *        return <input {...field} placeholder='Search' />     
+ *        return <input {...field} placeholder='Search' />
  *      }}
  *    />
  *   </FilterOptions>
@@ -32,8 +31,8 @@ createRoot(document.getElementById('root')!).render(
  *     }}
  *   />
  * </Filter>
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  */

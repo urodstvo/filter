@@ -1,6 +1,5 @@
-import { FilterListProps } from "./types/list"
+import { FilterListProps } from './types';
 
 export function FilterList({ render, initialList, callback }: FilterListProps<any>) {
-
-    return <>{render}</>
+    return <>{render}</>;
 }

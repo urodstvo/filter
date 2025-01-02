@@ -1,4 +1,3 @@
-
 /** @type {import('prettier').Config} */
 const config = {
     semi: true,
@@ -6,6 +5,6 @@ const config = {
     singleQuote: true,
     jsxSingleQuote: true,
     printWidth: 120,
-}
-  
-  export default config
+};
+
+export default config;
