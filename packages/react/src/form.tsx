@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { FieldValues, FilterFormProps } from './types';
 import { useFilterContext } from './provider';
-import { useSubscribe } from './use-watch';
+import { useSubscribe } from './use-subscribe';
 
 type persistDataProps = {
     value: any;

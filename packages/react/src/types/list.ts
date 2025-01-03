@@ -1,4 +1,4 @@
-import { FieldValues } from "./field";
+import { FieldValues } from './field';
 
 export type FilterListProps<T> = {
     render: (list: T[], prevList?: T[]) => React.ReactElement;

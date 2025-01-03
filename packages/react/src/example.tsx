@@ -17,7 +17,7 @@ const list = [
         id: 3,
         name: 'Dick',
     },
-]
+];
 
 export const Example = () => {
     return (
@@ -62,38 +62,51 @@ export const Example = () => {
                         )}
                     />
                 </FilterForm>
-                <div style={{
-                    display: 'flex',
-                    gap: 16
-                }}>
-
-                <FilterList 
-                    initialList={list}
-                    callback={({initialList, filterValues}) => {
-                        return initialList.filter(item => item.name.toLowerCase().includes(filterValues.aboba?.toLowerCase()))
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: 16,
                     }}
-                    render={(list) => {
-                        return <>
-                            {list.map(item => {
-                                return <div key={item.id}>{item.name}</div>
-                            })}
-                        </>
-                    }}
+                >
+                    <FilterList
+                        initialList={list}
+                        callback={({ initialList, filterValues }) => {
+                            return initialList.filter((item) =>
+                                item.name.toLowerCase().includes(filterValues.aboba?.toLowerCase()),
+                            );
+                        }}
+                        render={(list) => {
+                            return (
+                                <>
+                                    {list.map((item) => {
+                                        return <div key={item.id}>{item.name}</div>;
+                                    })}
+                                </>
+                            );
+                        }}
                     />
-                <FilterList 
-                    initialList={list}
-                    callback={({initialList, filterValues}) => {
-                        return initialList.filter(item => item.name.toLowerCase().includes(filterValues.aboba?.toLowerCase()))
-                    }}
-                    render={(_, prev) => {
-                        return <>
-                            {prev?.map(item => {
-                                return <div key={item.id} style={{color: 'red'}}>{item.name}</div>
-                            })}
-                        </>
-                    }}
+                    <FilterList
+                        initialList={list}
+                        callback={({ initialList, filterValues }) => {
+                            return initialList.filter((item) =>
+                                item.name.toLowerCase().includes(filterValues.aboba?.toLowerCase()),
+                            );
+                        }}
+                        render={(_, prev) => {
+                            return (
+                                <>
+                                    {prev?.map((item) => {
+                                        return (
+                                            <div key={item.id} style={{ color: 'red' }}>
+                                                {item.name}
+                                            </div>
+                                        );
+                                    })}
+                                </>
+                            );
+                        }}
                     />
-                    </div>
+                </div>
                 <FilterReset render={({ onClick }) => <button onClick={onClick}>Reset</button>} />
                 <FilterReset
                     fieldName='ne_aboba'
