@@ -29,7 +29,6 @@ import getFieldValue, {
     cloneObject,
     convertToArrayPayload,
     createSubject,
-    generateWatchOutput,
     getEventValue,
     getFieldValueAs,
     isBoolean,
@@ -46,12 +45,13 @@ import getFieldValue, {
     isUndefined,
     isWatched,
     isWeb,
-    iterateFieldsByAction,
     live,
 } from './utils';
 import get from './get';
 import set from './set';
 import { EVENTS } from '../constants';
+import { generateWatchOutput } from './generateWatchOutput';
+import { iterateFieldsByAction } from './iterates';
 
 export function createControl<TFieldValues extends FieldValues = FieldValues, TContext = any>(
     props: UseFilterProps<TFieldValues, TContext> = {},

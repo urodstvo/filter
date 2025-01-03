@@ -1,11 +1,8 @@
 import {
-    DeepPartial,
     EmptyObject,
     Primitive,
     Field,
     FieldElement,
-    FieldRefs,
-    FieldValues,
     InternalFieldName,
     NativeFieldValue,
     Ref,
@@ -14,7 +11,6 @@ import {
     Subject,
     Subscription,
 } from '../types';
-import get from './get';
 
 export const isObjectType = (value: unknown): value is object => typeof value === 'object';
 
@@ -251,52 +247,7 @@ export function deepEqual(object1: any, object2: any) {
     return true;
 }
 
-export const generateWatchOutput = <T>(
-    names: string | string[] | undefined,
-    _names: Names,
-    filterValues?: FieldValues,
-    isGlobal?: boolean,
-    defaultValue?: DeepPartial<T> | unknown,
-) => {
-    if (isString(names)) {
-        isGlobal && _names.watch.add(names);
-        return get(filterValues, names, defaultValue);
-    }
-
-    if (Array.isArray(names)) {
-        return names.map((fieldName) => (isGlobal && _names.watch.add(fieldName), get(filterValues, fieldName)));
-    }
-
-    isGlobal && (_names.watchAll = true);
-
-    return filterValues;
-};
-
 export const convertToArrayPayload = <T>(value: T) => (Array.isArray(value) ? value : [value]);
-
-export const iterateFieldsByAction = (
-    fields: FieldRefs,
-    action: (ref: Ref, name: string) => 1 | undefined | void,
-    fieldsNames?: Set<InternalFieldName> | InternalFieldName[] | 0,
-    abortEarly?: boolean,
-) => {
-    for (const key of fieldsNames || Object.keys(fields)) {
-        const field = get(fields, key);
-
-        if (field) {
-            const { _f, ...currentField } = field;
-
-            if (_f) {
-                if (_f.refs && _f.refs[0] && action(_f.refs[0], key) && !abortEarly) return true;
-                else if (_f.ref && action(_f.ref, _f.name) && !abortEarly) return true;
-                else if (iterateFieldsByAction(currentField, action)) break;
-            } else if (isObject(currentField)) {
-                if (iterateFieldsByAction(currentField as FieldRefs, action)) break;
-            }
-        }
-    }
-    return;
-};
 
 export const shouldSubscribeByName = <T extends string | string[] | undefined>(
     name?: T,
