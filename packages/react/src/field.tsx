@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useFilterContext } from './provider';
-
 import {
     Field,
     FieldProps,
@@ -12,7 +11,7 @@ import {
     FieldPathValue,
 } from './types';
 import { get, set, cloneObject, getEventValue, isBoolean, isUndefined } from './implementation';
-import { useWatch } from './useWatch';
+import { useWatch } from './use-watch';
 import { EVENTS } from './constants';
 
 function useField<
@@ -70,8 +69,6 @@ function useField<
                 field._f.ref = {
                     focus: () => elm.focus(),
                     select: () => elm.select(),
-                    setCustomValidity: (message: string) => elm.setCustomValidity(message),
-                    reportValidity: () => elm.reportValidity(),
                 };
             }
         },

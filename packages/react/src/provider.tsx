@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { createControl, deepEqual, isFunction } from './implementation';
 import { FilterState, FieldValues, FilterContextType, FilterProviderProps, UseFilterProps } from './types';
-import { useSubscribe } from './useWatch';
+import { useSubscribe } from './use-watch';
 
 const FilterContext = createContext<FilterContextType | null>(null);
 
